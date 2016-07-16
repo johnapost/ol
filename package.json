@@ -80,7 +80,7 @@
     "selenium-server-standalone-jar": "2.52.0",
     "tsify": "^0.16.0",
     "tslint": "^3.11.0",
-    "typescript": "^2.1.0-dev.20160715",
+    "typescript": "^1.8.10",
     "velocity-animate": "^1.2.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
