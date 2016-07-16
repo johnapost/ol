@@ -4,7 +4,7 @@
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
     "jquery": "registry:dt/jquery#1.10.0+20160701124751",
     "node": "registry:dt/node#6.0.0+20160621231320",
-    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#9807d9b701f58be068cb07833d2b24235351d052"
+    "faker": "registry:dt/faker#0.0.0+20160406111603"
   },
   "globalDevDependencies": {
     "velocity-animate": "registry:dt/velocity-animate#1.2.2+20160317120654"

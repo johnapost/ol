@@ -11,18 +11,14 @@ module.exports = function(config) {
       'node_modules/velocity-animate/velocity.min.js',
       'node_modules/velocity-animate/velocity.ui.min.js',
       'node_modules/faker/build/build/faker.min.js',
-      'src/app/**/*.component.ts',
-      'src/app/**/*.directive.ts',
-      'src/app/**/*.service.ts'
+      'src/app/**/*.ts',
     ],
 
     exclude: [
     ],
 
     preprocessors: {
-      'src/app/**/*.component.ts': ['browserify'],
-      'src/app/**/*.directive.ts': ['browserify'],
-      'src/app/**/*.service.ts': ['browserify']
+      'src/app/**/*.ts': ['browserify'],
     },
 
     browserify: {

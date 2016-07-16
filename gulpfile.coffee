@@ -51,6 +51,7 @@ gulp.task 'default', [
   'ts'
   'tsLint'
   'jade'
+  'jadeComponents'
   'sass'
   'sassComponents'
   'images'

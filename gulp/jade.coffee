@@ -21,7 +21,7 @@ errorAlert = (error) ->
   @.emit 'end'
 
 gulp.task 'jade', ->
-  gulp.src 'src/**/*.jade'
+  gulp.src 'src/views/**/*.jade'
     .pipe plumber errorHandler: errorAlert
     .pipe changed(config.path, extension: '.html')
 
@@ -38,5 +38,17 @@ gulp.task 'jade', ->
     .pipe rename (file) ->
       file.dirname = file.dirname.replace('views', '')
     .pipe gulp.dest(config.path)
+
+gulp.task 'jadeComponents', ->
+  gulp.src 'src/app/**/*.jade'
+    .pipe plumber errorHandler: errorAlert
+    .pipe changed(config.path, extension: '.html')
+
+    .pipe cached('jadeComponents')
+    .pipe debug(title: 'changed')
+    .pipe jade(pretty: false)
+    .pipe chmod(755)
+
+    .pipe gulp.dest("#{config.path}/components")
 
 module.exports = gulp
