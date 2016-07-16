@@ -1,0 +1,9 @@
+.DS_Store
+build
+coverage
+dist
+node_modules
+NOTES.md
+npm-debug.log
+temp
+typings
