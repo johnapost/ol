@@ -20,20 +20,24 @@ Built with
 
 * Client
   * Angular 2 RC 4 - JS Framework along with its dependencies
+  * Material Design for Angular 2 - CSS Framework
   * Velocity - Animation framework
   * JQuery slim - Element selectors
 
 * Dev
   * TypeScript - Typed JavaScript superset
-  * CoffeeScript - JS preprocessor (for gulp files)
+  * CoffeeScript - JS preprocessor (for gulp and nightwatch)
   * Pug/Jade - HTML preprocessor
   * SCSS - CSS preprocessor
   * gulp.js - Task automation
   * Browserify - JS bundler
+
+* Testing
   * Karma - Test runner
   * Jasmine - Test framework
   * Faker - Fake test data
   * Istanbul - Code coverage
+  * NightwatchJS - E2E tests with Selenium
 
 * Linting
   * TSLint

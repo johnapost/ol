@@ -33,6 +33,7 @@
     "browser-sync": "^2.5.3",
     "browserify": "^13.0.1",
     "browserify-istanbul": "^2.0.0",
+    "chromedriver": "^2.21.2",
     "coffee-script": "^1.9.1",
     "core-js": "^2.4.0",
     "del": "^2.2.0",
