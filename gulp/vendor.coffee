@@ -10,7 +10,7 @@ gulp.task 'vendor', ->
     'node_modules/core-js/client/shim.min.js'
     'node_modules/zone.js/dist/zone.js'
     'node_modules/reflect-metadata/Reflect.js'
-    'node_modules/jquery/dist/jquery.min.js'
+    'node_modules/jquery/dist/jquery.slim.min.js'
     'node_modules/velocity-animate/velocity.min.js'
     'node_modules/velocity-animate/velocity.ui.min.js'
   ]
