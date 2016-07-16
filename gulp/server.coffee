@@ -1,7 +1,6 @@
 gulp = require 'gulp'
 browserSync = require 'browser-sync'
 config = require './config.coffee'
-nodemon = require 'gulp-nodemon'
 
 gulp.task 'serve', ['sass'], ->
   browserSync
