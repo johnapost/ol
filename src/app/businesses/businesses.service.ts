@@ -31,7 +31,7 @@ export class BusinessesService {
 
   constructor(private http: Http) {}
 
-  // Retrieve the list of business data
+  // Retrieve the list of businesses
   getBusinesses(page?: number, perPage?: number) {
     let params = new URLSearchParams()
 
@@ -65,5 +65,15 @@ export class BusinessesService {
   // Deal with any errors
   handleError(err: any) {
     return Observable.throw(err)
+  }
+
+  // Request the previous page of businesses
+  previousPage() {
+
+  }
+
+  // Request the next page of businesses
+  nextPage(page: number, perPage: number) {
+    this.getBusinesses(page, perPage)
   }
 }

@@ -10,7 +10,14 @@ describe('BusinessesComponent', () => {
     businessesComponent = new BusinessesComponent(router, businessesService)
   })
 
-  describe('ngOnInit', () => {
+  it('ngOnInit should call subscribeHandler', () => {
+    let subscribeHandlerSpy = spyOn(businessesComponent, 'subscribeHandler')
+
+    businessesComponent.ngOnInit()
+    expect(subscribeHandlerSpy).toHaveBeenCalled()
+  })
+
+  describe('subscribeHandler', () => {
     var businesses, lastPage
 
     beforeEach(() => {
@@ -33,12 +40,12 @@ describe('BusinessesComponent', () => {
     })
 
     it('should subscribe', () => {
-      businessesComponent.ngOnInit()
+      businessesComponent.subscribeHandler()
       expect(businessesComponent.businesses).toEqual(businesses)
     })
 
     it('should set the lastPage', () => {
-      businessesComponent.ngOnInit()
+      businessesComponent.subscribeHandler()
       expect(businessesComponent.lastPage).toEqual(lastPage)
     })
   })
@@ -53,6 +60,26 @@ describe('BusinessesComponent', () => {
 
     businessesComponent.openBusiness(business)
     expect(navigateSpy).toHaveBeenCalledWith(['/business', id])
+  })
+
+  it('previousPage', () => {
+    let page = faker.random.number({min: 10, max: 1000})
+    businessesComponent.page = page
+    let subscribeSpy = spyOn(businessesComponent, 'subscribeHandler')
+
+    businessesComponent.previousPage()
+    expect(businessesComponent.page).toEqual(page - 1)
+    expect(subscribeSpy).toHaveBeenCalled()
+  })
+
+  it('nextPage', () => {
+    let page = faker.random.number({min: 10, max: 1000})
+    businessesComponent.page = page
+    let subscribeSpy = spyOn(businessesComponent, 'subscribeHandler')
+
+    businessesComponent.nextPage()
+    expect(businessesComponent.page).toEqual(page + 1)
+    expect(subscribeSpy).toHaveBeenCalled()
   })
 
   it('ngOnDestroy unsubscribes from the Observable', () => {

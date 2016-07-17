@@ -1,9 +1,9 @@
 div(*ngIf='businesses')
-  button(md-raised-button [disabled]='page === 1')
+  button(md-raised-button [disabled]='page === 1', (click)='previousPage()')
     md-icon.md-24 chevron_left
     | Previous
 
-  button(md-raised-button [disabled]='page === lastPage')
+  button(md-raised-button [disabled]='page === lastPage', (click)='nextPage()')
     | Next
     md-icon.md-24 chevron_right
 

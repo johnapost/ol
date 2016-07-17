@@ -22,26 +22,45 @@ export class BusinessesComponent {
   subscription: Subscription
   lastPage: number
   page: number = 1
+  perPage: number = 50
 
   constructor(
     private router: Router,
     private businessesService: BusinessesService
   ) {}
 
-  // Subscribe to observable, immediately executing XHR for initial list
+  // Get initial list
   ngOnInit() {
-    this.subscription = this.businessesService.getBusinesses(this.page)
-      .subscribe((businessesObj: BusinessesObj) => {
-        this.businesses = businessesObj.businesses
-        let lastPageUrl = businessesObj.pages.last
-        let pageIndex = lastPageUrl.lastIndexOf('page=')
-        this.lastPage = +lastPageUrl.slice(pageIndex).split('page=')[1]
-      })
+    this.subscribeHandler()
+  }
+
+  // Subscribe to observable, immediately executing XHR
+  subscribeHandler() {
+    this.subscription =
+      this.businessesService.getBusinesses(this.page, this.perPage)
+        .subscribe((businessesObj: BusinessesObj) => {
+          this.businesses = businessesObj.businesses
+          let lastPageUrl = businessesObj.pages.last
+          let pageIndex = lastPageUrl.lastIndexOf('page=')
+          this.lastPage = +lastPageUrl.slice(pageIndex).split('page=')[1]
+        })
   }
 
   // Navigate to the details for a business
   openBusiness(business: BusinessObj) {
     this.router.navigate(['/business', business.id])
+  }
+
+  // Move backward by one page
+  previousPage() {
+    this.page = this.page - 1
+    this.subscribeHandler()
+  }
+
+  // Move forward by one page
+  nextPage() {
+    this.page = this.page + 1
+    this.subscribeHandler()
   }
 
   // Unsubscribe when the component is removed

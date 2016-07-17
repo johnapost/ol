@@ -1,4 +1,5 @@
 import { BusinessesService } from './businesses.service'
+import { URLSearchParams } from '@angular/http'
 import { Observable } from 'rxjs'
 import faker = require('faker')
 var businessesService
@@ -17,6 +18,23 @@ describe('BusinessesService', () => {
       }
     }
     businessesService = new BusinessesService(http)
+  })
+
+  describe('getBusinesses', () => {
+    var getSpy, params
+
+    beforeEach(() => {
+      getSpy = spyOn(businessesService.http, 'get').and.callThrough()
+      params = new URLSearchParams()
+    })
+
+    it('should make a GET request', () => {
+      businessesService.getBusinesses()
+
+      expect(getSpy).toHaveBeenCalledWith(
+        `${businessesService.path}/businesses`, { search: params }
+      )
+    })
   })
 
   describe('getBusiness', () => {
