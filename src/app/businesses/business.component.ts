@@ -1,6 +1,8 @@
 import { Component } from '@angular/core'
 import { NgIf } from '@angular/common'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, Router, ROUTER_DIRECTIVES } from '@angular/router'
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
+import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
 import { Subscription } from 'rxjs/Subscription'
 import {
   BusinessesService,
@@ -8,9 +10,15 @@ import {
 } from './businesses.service'
 
 @Component({
-  directives: [NgIf],
-  providers: [BusinessesService],
+  directives: [
+    MD_BUTTON_DIRECTIVES,
+    MD_ICON_DIRECTIVES,
+    NgIf,
+    ROUTER_DIRECTIVES
+  ],
+  providers: [BusinessesService, MdIconRegistry],
   selector: 'business',
+  styleUrls: ['../components/businesses/business.component.css'],
   templateUrl: '../components/businesses/business.component.html'
 })
 export class BusinessComponent {

@@ -1,13 +1,20 @@
-ul(*ngIf='business')
-  li id: {{business.id}}
-  li uuid: {{business.uuid}}
-  li name: {{business.name}}
-  li address: {{business.address}}
-  li address2: {{business.address2}}
-  li city: {{business.city}}
-  li state: {{business.state}}
-  li zip: {{business.zip}}
-  li country: {{business.country}}
-  li phone: {{business.phone}}
-  li website: {{business.website}}
-  li created_at: {{business.created_at}}
+.wrapper
+  .control
+    button(md-raised-button [routerLink]="'/'")
+      md-icon.md-24 chevron_left
+      | Back
+
+  .content(*ngIf='business')
+    ul
+      li id: {{business.id}}
+      li uuid: {{business.uuid}}
+      li name: {{business.name}}
+      li address: {{business.address}}
+      li address2: {{business.address2}}
+      li city: {{business.city}}
+      li state: {{business.state}}
+      li zip: {{business.zip}}
+      li country: {{business.country}}
+      li phone: {{business.phone}}
+      li website: {{business.website}}
+      li created_at: {{business.created_at}}

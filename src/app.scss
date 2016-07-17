@@ -1,3 +1,31 @@
+body {
+  margin: 0;
+}
+
 h1 {
   font-size: 1rem;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 1320px;
+  width: 90%;
+}
+
+.control {
+  float: right;
+  margin: 16px 0;
+}
+
+button:last-child {
+  margin-left: 16px;
+}
+
+md-icon {
+  position: relative;
+  top: 7px;
+}
+
+.content {
+  clear: both;
 }
