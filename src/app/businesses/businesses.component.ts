@@ -25,7 +25,7 @@ import {
   templateUrl: '../components/businesses/businesses.component.html'
 })
 export class BusinessesComponent {
-  businesses: Array<BusinessObj>
+  businesses: Array<BusinessObj> = []
   subscription: Subscription
   lastPage: number
   page: number = 1
@@ -60,12 +60,14 @@ export class BusinessesComponent {
 
   // Move backward by one page
   previousPage() {
+    this.businesses = []
     this.page = this.page - 1
     this.subscribeHandler()
   }
 
   // Move forward by one page
   nextPage() {
+    this.businesses = []
     this.page = this.page + 1
     this.subscribeHandler()
   }

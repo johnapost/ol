@@ -1,27 +1,54 @@
+previousPageButton = '.control button:first-child'
+nextPageButton = '.control button:last-child'
+
 # Make sure the initial business list is displayed
 initialList = (browser) ->
   browser
-    .waitForElementPresent 'app md-list'
-    .assert.elementPresent 'app md-list md-list-item:nth-child(50)'
+    .waitForElementPresent 'app md-nav-list md-list-item'
+    .assert.elementPresent 'app md-nav-list md-list-item:nth-child(50)'
+
+# Click the previous page button
+previousPage = (browser) ->
+  browser
+    .waitForElementPresent previousPageButton
+    .click previousPageButton
+    .waitForElementPresent 'app md-nav-list md-list-item:nth-child(50)'
+    .assert.containsText 'app md-nav-list md-list-item:last-child', '49:'
+
+# Click the next page button
+nextPage = (browser) ->
+  browser
+    .waitForElementPresent nextPageButton
+    .click nextPageButton
+    .waitForElementPresent 'app md-nav-list md-list-item:nth-child(50)'
+    .assert.containsText 'app md-nav-list md-list-item:last-child', '99:'
 
 module.exports =
-  'Desktop: Businesses list should initially display': (browser) ->
+  'Users should see an initial business list': (browser) ->
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
 
     initialList browser
 
-  'Tablet: Businesses list should initially display': (browser) ->
+    browser.end()
+
+  'Users should be able to move forward one page': (browser) ->
     browser
-      .resizeWindow 601, 720
+      .resizeWindow 1025, 768
       .url browser.globals.path
 
-    initialList browser
+    nextPage browser
 
-  'Mobile: Businesses list should initially display': (browser) ->
+    browser.end()
+
+  'Users should be able to move back one page': (browser) ->
     browser
-      .resizeWindow 480, 720
+      .resizeWindow 1025, 768
       .url browser.globals.path
+      .assert.elementPresent "#{previousPageButton}[disabled]"
 
-    initialList browser
+    nextPage browser
+    previousPage browser
+
+    browser.end()
