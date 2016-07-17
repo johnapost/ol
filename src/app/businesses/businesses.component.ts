@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { NgFor } from '@angular/common'
+import { NgFor, NgIf } from '@angular/common'
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
 import {
@@ -9,7 +9,7 @@ import {
 } from './businesses.service'
 
 @Component({
-  directives: [NgFor],
+  directives: [NgFor, NgIf],
   providers: [BusinessesService],
   selector: 'businesses',
   templateUrl: '../components/businesses/businesses.component.html'

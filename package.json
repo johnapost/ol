@@ -9,7 +9,7 @@
   },
   "scripts": {
     "postinstall": "typings install",
-    "test": "karma start --single-run",
+    "test": "karma start --single-run && gulp e2e && nightwatch -e chrome",
     "test-coverage": "tsc --sourceMap --outDir temp && karma start karma-coverage.conf.js && remap-istanbul -i ./temp/firefox/coverage-final.json -t lcovonly > ./temp/lcov.info"
   },
   "author": "John Apostol",
