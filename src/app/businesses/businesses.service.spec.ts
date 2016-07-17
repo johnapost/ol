@@ -1,7 +1,7 @@
 import { BusinessesService } from './businesses.service'
 import { Observable } from 'rxjs'
 import faker = require('faker')
-let businessesService
+var businessesService
 
 describe('BusinessesService', () => {
   beforeEach(() => {
