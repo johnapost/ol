@@ -51,11 +51,8 @@ export class BusinessesService {
 
   // Retrieve a specific business' details
   getBusiness(id: number) {
-    let params = new URLSearchParams()
-    params.set('id', id.toString())
-
     return this.http
-      .get(`${this.path}/businesses`, { search: params })
+      .get(`${this.path}/businesses/${id}`)
       .map(this.handleResponse)
       .catch(this.handleError)
   }
