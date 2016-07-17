@@ -1,3 +1,4 @@
+browserSync = require 'browser-sync'
 cached = require 'gulp-cached'
 changed = require 'gulp-changed'
 chmod = require 'gulp-chmod'
@@ -38,6 +39,7 @@ gulp.task 'jade', ->
     .pipe rename (file) ->
       file.dirname = file.dirname.replace('views', '')
     .pipe gulp.dest(config.path)
+    .pipe browserSync.reload(stream: true)
 
 gulp.task 'jadeComponents', ->
   gulp.src 'src/app/**/*.jade'
@@ -50,5 +52,6 @@ gulp.task 'jadeComponents', ->
     .pipe chmod(755)
 
     .pipe gulp.dest("#{config.path}/components")
+    .pipe browserSync.reload(stream: true)
 
 module.exports = gulp

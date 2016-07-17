@@ -12,8 +12,9 @@ describe('BusinessComponent', () => {
   })
 
   it('ngOnInit should subscribe', () => {
-    var business = { id: faker.random.number() }
-    businessComponent.route = { params: [] }
+    let id = faker.random.number()
+    var business = { id: id }
+    businessComponent.route = { params: [{ id: id }] }
     businessComponent.businessesService = {
       getBusiness() {
         return {

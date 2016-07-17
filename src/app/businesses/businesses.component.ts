@@ -2,6 +2,8 @@ import { Component } from '@angular/core'
 import { NgFor, NgIf } from '@angular/common'
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
+import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
 import {
   BusinessesService,
   BusinessObj,
@@ -9,14 +11,17 @@ import {
 } from './businesses.service'
 
 @Component({
-  directives: [NgFor, NgIf],
-  providers: [BusinessesService],
+  directives: [NgFor, NgIf, MD_BUTTON_DIRECTIVES, MD_ICON_DIRECTIVES],
+  providers: [BusinessesService, MdIconRegistry],
   selector: 'businesses',
+  styleUrls: ['../components/businesses/businesses.component.css'],
   templateUrl: '../components/businesses/businesses.component.html'
 })
 export class BusinessesComponent {
   businesses: Array<BusinessObj>
   subscription: Subscription
+  lastPage: number
+  page: number = 1
 
   constructor(
     private router: Router,
@@ -25,9 +30,12 @@ export class BusinessesComponent {
 
   // Subscribe to observable, immediately executing XHR for initial list
   ngOnInit() {
-    this.subscription = this.businessesService.getBusinesses()
-      .subscribe((businesses: BusinessesObj) => {
-        this.businesses = businesses.businesses
+    this.subscription = this.businessesService.getBusinesses(this.page)
+      .subscribe((businessesObj: BusinessesObj) => {
+        this.businesses = businessesObj.businesses
+        let lastPageUrl = businessesObj.pages.last
+        let pageIndex = lastPageUrl.lastIndexOf('page=')
+        this.lastPage = +lastPageUrl.slice(pageIndex).split('page=')[1]
       })
   }
 

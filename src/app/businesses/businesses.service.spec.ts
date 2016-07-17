@@ -20,7 +20,7 @@ describe('BusinessesService', () => {
   })
 
   describe('getBusiness', () => {
-    var id, getSpy, mapSpy, catchSpy
+    var id, getSpy
 
     beforeEach(() => {
       id = faker.random.number()

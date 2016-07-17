@@ -10,20 +10,37 @@ describe('BusinessesComponent', () => {
     businessesComponent = new BusinessesComponent(router, businessesService)
   })
 
-  it('ngOnInit should subscribe', () => {
-    var businesses = [faker.lorem.words(1)]
-    businessesComponent.businessesService = {
-      getBusinesses() {
-        return {
-          subscribe(fn1: any) {
-            fn1({ businesses: businesses })
+  describe('ngOnInit', () => {
+    var businesses, lastPage
+
+    beforeEach(() => {
+      businesses = [faker.lorem.words(1)]
+      lastPage = faker.random.number()
+      businessesComponent.businessesService = {
+        getBusinesses() {
+          return {
+            subscribe(fn1: any) {
+              fn1({
+                businesses: businesses,
+                pages: {
+                  last: `${faker.internet.domainName()}?page=${lastPage}`
+                }
+              })
+            }
           }
         }
       }
-    }
+    })
 
-    businessesComponent.ngOnInit()
-    expect(businessesComponent.businesses).toEqual(businesses)
+    it('should subscribe', () => {
+      businessesComponent.ngOnInit()
+      expect(businessesComponent.businesses).toEqual(businesses)
+    })
+
+    it('should set the lastPage', () => {
+      businessesComponent.ngOnInit()
+      expect(businessesComponent.lastPage).toEqual(lastPage)
+    })
   })
 
   it('openBusiness should navigate to a business', () => {

@@ -40,7 +40,7 @@ gulp.task 'sass', ->
     .pipe browserSync.reload(stream: true)
 
 gulp.task 'sassComponents', ->
-  gulp.src 'src/components/**/*.scss'
+  gulp.src 'src/app/**/*.scss'
     .pipe plumber errorHandler: errorAlert
 
     .pipe sass(style: 'expanded')

@@ -1,3 +1,12 @@
-ul(*ngIf='businesses')
-  li(*ngFor='let business of businesses')
-    a((click)='openBusiness(business)') {{business.name}}
+div(*ngIf='businesses')
+  button(md-raised-button [disabled]='page === 1')
+    md-icon.md-24 chevron_left
+    | Previous
+
+  button(md-raised-button [disabled]='page === lastPage')
+    | Next
+    md-icon.md-24 chevron_right
+
+  ul
+    li(*ngFor='let business of businesses')
+      a((click)='openBusiness(business)') {{business.name}}
