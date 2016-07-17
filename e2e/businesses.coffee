@@ -1,8 +1,8 @@
 # Make sure the initial business list is displayed
 initialList = (browser) ->
   browser
-    .waitForElementPresent 'app ul'
-    .assert.elementPresent 'app ul li:nth-child(50)'
+    .waitForElementPresent 'app md-list'
+    .assert.elementPresent 'app md-list md-list-item:nth-child(50)'
 
 module.exports =
   'Desktop: Businesses list should initially display': (browser) ->

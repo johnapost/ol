@@ -1,13 +1,12 @@
 .wrapper
   .control
     button(md-raised-button [disabled]='page === 1', (click)='previousPage()')
-      md-icon.md-24 chevron_left
+      md-icon chevron_left
       | Previous
     button(md-raised-button [disabled]='page === lastPage', (click)='nextPage()')
       | Next
-      md-icon.md-24 chevron_right
+      md-icon chevron_right
 
   .content(*ngIf='businesses')
-    ul
-      li(*ngFor='let business of businesses')
-        a((click)='openBusiness(business)') {{business.name}}
+    md-nav-list(dense)
+      md-list-item(*ngFor='let business of businesses', (click)='openBusiness(business)') {{business.id}}: {{business.name}}

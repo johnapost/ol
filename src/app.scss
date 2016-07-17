@@ -15,15 +15,15 @@ h1 {
 .control {
   float: right;
   margin: 16px 0;
-}
 
-button:last-child {
-  margin-left: 16px;
-}
+  md-icon {
+    position: relative;
+    top: 7px;
+  }
 
-md-icon {
-  position: relative;
-  top: 7px;
+  button:last-child {
+    margin-left: 16px;
+  }
 }
 
 .content {

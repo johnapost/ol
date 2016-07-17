@@ -32,6 +32,7 @@
     "@angular2-material/button": "^2.0.0-alpha.6",
     "@angular2-material/core": "^2.0.0-alpha.6",
     "@angular2-material/icon": "^2.0.0-alpha.6",
+    "@angular2-material/list": "^2.0.0-alpha.6",
     "@angular2-material/toolbar": "^2.0.0-alpha.6",
     "angular2-in-memory-web-api": "0.0.14",
     "browser-sync": "^2.5.3",

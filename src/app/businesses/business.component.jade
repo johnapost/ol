@@ -1,7 +1,7 @@
 .wrapper
   .control
     button(md-raised-button [routerLink]="'/'")
-      md-icon.md-24 chevron_left
+      md-icon chevron_left
       | Back
 
   .content(*ngIf='business')
@@ -17,4 +17,4 @@
       li country: {{business.country}}
       li phone: {{business.phone}}
       li website: {{business.website}}
-      li created_at: {{business.created_at}}
+      li created_at: {{business.created_at | date: "MMMM d, y"}}
