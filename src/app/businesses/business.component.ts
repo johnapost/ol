@@ -19,4 +19,9 @@ export class BusinessComponent {
     private router: Router,
     private businessesService: BusinessesService
   ) {}
+
+  // Unsubscribe when the component is removed
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
 }

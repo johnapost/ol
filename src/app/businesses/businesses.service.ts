@@ -45,17 +45,25 @@ export class BusinessesService {
 
     return this.http
       .get(`${this.path}/businesses`, { search: params })
-      .map(this.handleBusinessesResponse)
+      .map(this.handleResponse)
+      .catch(this.handleError)
+  }
+
+  // Retrieve a specific business' details
+  getBusiness(id: number) {
+    let params = new URLSearchParams()
+    params.set('id', id.toString())
+
+    return this.http
+      .get(`${this.path}/businesses`, { search: params })
+      .map(this.handleResponse)
       .catch(this.handleError)
   }
 
   // Apply any transforms and return JSON
-  handleBusinessesResponse(res: Response) {
+  handleResponse(res: Response) {
     return res.json()
   }
-
-  // Retrieve a specific business' details
-  getBusiness(id: number) {}
 
   // Deal with any errors
   handleError(err: any) {

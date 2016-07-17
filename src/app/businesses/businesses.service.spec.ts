@@ -9,7 +9,7 @@ describe('BusinessesService', () => {
     businessesService = new BusinessesService(http)
   })
 
-  it('handleBusinessesResponse should return JSON', () => {
+  it('handleResponse should return JSON', () => {
     let uuid = faker.random.uuid()
     let res = {
       json: () => {
@@ -17,7 +17,7 @@ describe('BusinessesService', () => {
       }
     }
 
-    expect(businessesService.handleBusinessesResponse(res))
+    expect(businessesService.handleResponse(res))
       .toEqual([{ uuid: uuid }])
   })
 

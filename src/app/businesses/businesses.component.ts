@@ -36,6 +36,7 @@ export class BusinessesComponent {
     this.router.navigate(['/business', business.id])
   }
 
+  // Unsubscribe when the component is removed
   ngOnDestroy() {
     this.subscription.unsubscribe()
   }
