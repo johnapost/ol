@@ -14,13 +14,20 @@ gulp.task 'serve', ['sass'], ->
   gulp.watch ['src/**/*.ts', 'server/**/*.ts'], ['tsLint']
   gulp.watch ['server/**/*.ts'], ['tsTranspileServer']
   gulp.watch(
-    ['src/**/*.scss', '!src/components/**/*.scss'],
+    ['src/**/*.scss', '!src/app/**/*.scss']
     ['sass', 'scssLint']
   )
   gulp.watch(
-    ['!src/**/*.scss', 'src/components/**/*.scss'],
+    ['!src/**/*.scss', 'src/app/**/*.scss']
     ['sassComponents', 'scssLint', browserSync.reload]
   )
-  gulp.watch 'src/**/*.jade', ['jade', browserSync.reload]
+  gulp.watch(
+    ['src/**/*.jade', '!src/app/**/*.jade']
+    ['jade', browserSync.reload]
+  )
+  gulp.watch(
+    ['!src/**/*.jade', 'src/app/**/*.jade']
+    ['jadeComponents', browserSync.reload]
+  )
 
 module.exports = gulp
