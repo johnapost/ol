@@ -9,7 +9,19 @@ describe('BusinessesService', () => {
     businessesService = new BusinessesService(http)
   })
 
-  it('handleError return a thrown Observable error', () => {
+  it('handleBusinessesResponse should return JSON', () => {
+    let uuid = faker.random.uuid()
+    let res = {
+      json: () => {
+        return [{ uuid: uuid }]
+      }
+    }
+
+    expect(businessesService.handleBusinessesResponse(res))
+      .toEqual([{ uuid: uuid }])
+  })
+
+  it('handleError should return a thrown Observable error', () => {
     spyOn(Observable, 'throw')
     let err = faker.hacker.noun()
 

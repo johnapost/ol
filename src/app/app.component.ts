@@ -8,8 +8,4 @@ import { ROUTER_DIRECTIVES } from '@angular/router'
   selector: 'app',
   templateUrl: '../components/app.component.html'
 })
-export class AppComponent {
-  constructor() {
-    console.log('Hello World')
-  }
-}
+export class AppComponent {}
