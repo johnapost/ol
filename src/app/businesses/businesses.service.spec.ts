@@ -5,8 +5,35 @@ var businessesService
 
 describe('BusinessesService', () => {
   beforeEach(() => {
-    let http: any
+    let http: any = {
+      get() {
+        return {
+          map(fn: Function) {
+            return {
+              catch() { return }
+            }
+          },
+        }
+      }
+    }
     businessesService = new BusinessesService(http)
+  })
+
+  describe('getBusiness', () => {
+    var id, getSpy, mapSpy, catchSpy
+
+    beforeEach(() => {
+      id = faker.random.number()
+      getSpy = spyOn(businessesService.http, 'get').and.callThrough()
+    })
+
+    it('should make a GET request', () => {
+      businessesService.getBusiness(id)
+
+      expect(getSpy).toHaveBeenCalledWith(
+        `${businessesService.path}/businesses/${id}`
+      )
+    })
   })
 
   it('handleResponse should return JSON', () => {

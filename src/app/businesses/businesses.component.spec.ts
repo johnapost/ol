@@ -10,6 +10,22 @@ describe('BusinessesComponent', () => {
     businessesComponent = new BusinessesComponent(router, businessesService)
   })
 
+  it('ngOnInit should subscribe', () => {
+    var businesses = [faker.lorem.words(1)]
+    businessesComponent.businessesService = {
+      getBusinesses() {
+        return {
+          subscribe(fn1: any) {
+            fn1({ businesses: businesses })
+          }
+        }
+      }
+    }
+
+    businessesComponent.ngOnInit()
+    expect(businessesComponent.businesses).toEqual(businesses)
+  })
+
   it('openBusiness should navigate to a business', () => {
     let id = faker.random.number()
     let business = { id: id }

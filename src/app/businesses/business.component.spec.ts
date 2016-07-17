@@ -11,6 +11,23 @@ describe('BusinessComponent', () => {
     businessComponent = new BusinessComponent(route, router, businessesService)
   })
 
+  it('ngOnInit should subscribe', () => {
+    var business = { id: faker.random.number() }
+    businessComponent.route = { params: [] }
+    businessComponent.businessesService = {
+      getBusiness() {
+        return {
+          subscribe(fn1: any) {
+            fn1(business)
+          }
+        }
+      }
+    }
+
+    businessComponent.ngOnInit()
+    expect(businessComponent.business).toEqual(business)
+  })
+
   it('ngOnDestroy unsubscribes from the Observable', () => {
     businessComponent.subscription = {
       unsubscribe() { return }
