@@ -1,8 +1,9 @@
 import { provideRouter, RouterConfig } from '@angular/router'
-import { BusinessesComponent } from './businesses'
+import { BusinessesComponent, BusinessComponent } from './businesses'
 
 const routes: RouterConfig = [
-  { path: '', component: BusinessesComponent }
+  { path: '', component: BusinessesComponent },
+  { path: 'business/:id', component: BusinessComponent }
 ]
 
 export const appRouterProviders = [

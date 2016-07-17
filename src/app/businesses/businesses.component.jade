@@ -1,3 +1,4 @@
 ul
-  li(*ngFor="let business of businesses")
-    a {{business.name}}
+  li(*ngFor='let business of businesses')
+    a((click)='openBusiness(business)') {{business.name}}
+
