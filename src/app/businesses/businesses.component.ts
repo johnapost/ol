@@ -58,6 +58,22 @@ export class BusinessesComponent {
         })
   }
 
+  // Controls the user's interaction with the page input
+  pageHandler() {
+
+    // Make sure the user cannot go beyond the last page
+    if (this.page > this.lastPage) {
+      this.page = this.lastPage
+    }
+
+    // Empty values default to the first page
+    if (!this.page) {
+      this.page = 1
+    }
+
+    this.subscribeHandler()
+  }
+
   // Navigate to the details for a business
   openBusiness(business: BusinessObj) {
     this.router.navigate(['/business', business.id])

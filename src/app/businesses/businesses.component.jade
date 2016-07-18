@@ -1,6 +1,6 @@
 .wrapper
   .control
-    md-input([(ngModel)]='page' type='number' ngControl='page' name='', (keyup.enter)='subscribeHandler()', (blur)='subscribeHandler()')
+    md-input([(ngModel)]='page' type='number' ngControl='page' name='', (keyup.enter)='pageHandler()', (blur)='pageHandler()')
       span(md-prefix) Page:&nbsp;
     md-input([(ngModel)]='perPage' type='number' ngControl='perPage' name='', (keyup.enter)='subscribeHandler()', (blur)='subscribeHandler()')
       span(md-prefix) Results per page:&nbsp;

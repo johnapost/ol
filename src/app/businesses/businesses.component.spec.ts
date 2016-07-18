@@ -50,6 +50,34 @@ describe('BusinessesComponent', () => {
     })
   })
 
+  describe('pageHandler', () => {
+    var subscribeHandlerSpy
+
+    beforeEach(() => {
+      subscribeHandlerSpy = spyOn(businessesComponent, 'subscribeHandler')
+    })
+
+    it('should make sure the user cannot go beyond the last page', () => {
+      businessesComponent.lastPage = faker.random.number()
+      businessesComponent.page = businessesComponent.lastPage + 1
+
+      businessesComponent.pageHandler()
+      expect(businessesComponent.page).toEqual(businessesComponent.lastPage)
+    })
+
+    it('should set an empty value to 1', () => {
+      businessesComponent.page = undefined
+
+      businessesComponent.pageHandler()
+      expect(businessesComponent.page).toEqual(1)
+    })
+
+    it('should call subscribeHandler', () => {
+      businessesComponent.pageHandler()
+      expect(subscribeHandlerSpy).toHaveBeenCalled()
+    })
+  })
+
   it('openBusiness should navigate to a business', () => {
     let id = faker.random.number()
     let business = { id: id }
