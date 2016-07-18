@@ -1,0 +1,30 @@
+.wrapper
+  .control
+    button(md-raised-button [routerLink]="'/'")
+      md-icon chevron_left
+      | Back
+
+  .content(*ngIf='business')
+    md-card
+      md-card-title
+        md-icon business
+        | &nbsp;{{business.name}}
+      md-card-subtitle
+        | ID: {{business.id}}, UUID: {{business.uuid}}
+        br
+        | Created: {{business.created_at | date: "MMMM d, y"}}
+      md-card-content
+        h4 Address:
+        p
+          | {{business.address}}
+          br
+          | {{business.address2}}, {{business.zip}}
+          br
+          | {{business.city}}, {{business.state}}, {{business.country}}
+      md-card-actions
+        a(md-button href='tel:{{business.phone}}')
+          | Call
+          md-icon call
+        a(md-button href='{{business.website}}' target='_blank')
+          | Website
+          md-icon link

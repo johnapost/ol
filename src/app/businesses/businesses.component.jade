@@ -1,0 +1,17 @@
+.wrapper
+  .control
+    md-input([(ngModel)]='page' type='number' ngControl='page' name='', (keyup.enter)='pageHandler()', (blur)='pageHandler()')
+      span(md-prefix) Page:&nbsp;
+    md-input([(ngModel)]='perPage' type='number' ngControl='perPage' name='', (keyup.enter)='subscribeHandler()', (blur)='subscribeHandler()')
+      span(md-prefix) Results per page:&nbsp;
+  .control
+    button(md-raised-button [disabled]='page === 1', (click)='previousPage()')
+      md-icon chevron_left
+      | Previous
+    button(md-raised-button [disabled]='page === lastPage', (click)='nextPage()')
+      | Next
+      md-icon chevron_right
+
+  .content(*ngIf='businesses')
+    md-nav-list(dense)
+      md-list-item(*ngFor='let business of businesses', (click)='openBusiness(business)') {{business.id}}: {{business.name}}

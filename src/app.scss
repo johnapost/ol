@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1rem;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 1320px;
+  width: 90%;
+}
+
+.control {
+  margin: 16px 0;
+
+  button:first-child {
+    margin-right: 16px;
+  }
+}
+
+md-icon {
+  position: relative;
+  top: 7px;
+}
+
+.content {
+  clear: both;
+}
