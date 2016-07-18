@@ -13,11 +13,10 @@ h1 {
 }
 
 .control {
-  float: right;
   margin: 16px 0;
 
-  button:last-child {
-    margin-left: 16px;
+  button:first-child {
+    margin-right: 16px;
   }
 }
 

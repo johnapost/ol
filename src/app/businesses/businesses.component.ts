@@ -1,7 +1,9 @@
 import { Component } from '@angular/core'
 import { NgFor, NgIf } from '@angular/common'
+import { NgForm, NgModel } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input'
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button'
 import { MD_ICON_DIRECTIVES, MdIconRegistry } from '@angular2-material/icon'
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list'
@@ -15,9 +17,12 @@ import {
   directives: [
     MD_BUTTON_DIRECTIVES,
     MD_ICON_DIRECTIVES,
+    MD_INPUT_DIRECTIVES,
     MD_LIST_DIRECTIVES,
     NgFor,
-    NgIf
+    NgIf,
+    NgForm,
+    NgModel
   ],
   providers: [BusinessesService, MdIconRegistry],
   selector: 'businesses',
@@ -60,14 +65,12 @@ export class BusinessesComponent {
 
   // Move backward by one page
   previousPage() {
-    this.businesses = []
     this.page = this.page - 1
     this.subscribeHandler()
   }
 
   // Move forward by one page
   nextPage() {
-    this.businesses = []
     this.page = this.page + 1
     this.subscribeHandler()
   }
