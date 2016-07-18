@@ -81,12 +81,14 @@ export class BusinessesComponent {
 
   // Move backward by one page
   previousPage() {
+    this.businesses = []
     this.page = this.page - 1
     this.subscribeHandler()
   }
 
   // Move forward by one page
   nextPage() {
+    this.businesses = []
     this.page = this.page + 1
     this.subscribeHandler()
   }

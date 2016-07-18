@@ -90,24 +90,56 @@ describe('BusinessesComponent', () => {
     expect(navigateSpy).toHaveBeenCalledWith(['/business', id])
   })
 
-  it('previousPage', () => {
-    let page = faker.random.number({min: 10, max: 1000})
-    businessesComponent.page = page
-    let subscribeSpy = spyOn(businessesComponent, 'subscribeHandler')
+  describe('previousPage', () => {
+    var subscribeHandlerSpy
 
-    businessesComponent.previousPage()
-    expect(businessesComponent.page).toEqual(page - 1)
-    expect(subscribeSpy).toHaveBeenCalled()
+    beforeEach(() => {
+      subscribeHandlerSpy = spyOn(businessesComponent, 'subscribeHandler')
+    })
+
+    it('should set businesses to empty', () => {
+      businessesComponent.previousPage()
+      expect(businessesComponent.businesses).toEqual([])
+    })
+
+    it('should update the current page', () => {
+      let page = faker.random.number({min: 10, max: 1000})
+      businessesComponent.page = page
+
+      businessesComponent.previousPage()
+      expect(businessesComponent.page).toEqual(page - 1)
+    })
+
+    it('should call subscribeHandler', () => {
+      businessesComponent.previousPage()
+      expect(subscribeHandlerSpy).toHaveBeenCalled()
+    })
   })
 
-  it('nextPage', () => {
-    let page = faker.random.number({min: 10, max: 1000})
-    businessesComponent.page = page
-    let subscribeSpy = spyOn(businessesComponent, 'subscribeHandler')
+  describe('nextPage', () => {
+    var subscribeHandlerSpy
 
-    businessesComponent.nextPage()
-    expect(businessesComponent.page).toEqual(page + 1)
-    expect(subscribeSpy).toHaveBeenCalled()
+    beforeEach(() => {
+      subscribeHandlerSpy = spyOn(businessesComponent, 'subscribeHandler')
+    })
+
+    it('should set businesses to empty', () => {
+      businessesComponent.nextPage()
+      expect(businessesComponent.businesses).toEqual([])
+    })
+
+    it('should update the current page', () => {
+      let page = faker.random.number({min: 10, max: 1000})
+      businessesComponent.page = page
+
+      businessesComponent.nextPage()
+      expect(businessesComponent.page).toEqual(page + 1)
+    })
+
+    it('should call subscribeHandler', () => {
+      businessesComponent.nextPage()
+      expect(subscribeHandlerSpy).toHaveBeenCalled()
+    })
   })
 
   it('ngOnDestroy unsubscribes from the Observable', () => {
