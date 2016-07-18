@@ -43,7 +43,7 @@ updatePerPage = (browser) ->
     .clearValue updatePerPageInput
     .setValue updatePerPageInput, '100'
     .click 'md-toolbar'
-    .pause 500
+    .pause 1000
     .waitForElementPresent 'app md-nav-list md-list-item:nth-child(100)'
     .assert.containsText 'app md-nav-list md-list-item:last-child', '99:'
 
@@ -52,6 +52,7 @@ module.exports =
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
+      .pause 1000
 
     initialList browser
 
@@ -61,6 +62,7 @@ module.exports =
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
+      .pause 1000
 
     nextPage browser
 
@@ -70,6 +72,7 @@ module.exports =
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
+      .pause 1000
       .assert.elementPresent "#{previousPageButton}[disabled]"
 
     nextPage browser
@@ -81,7 +84,7 @@ module.exports =
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
-      .assert
+      .pause 1000
 
     updatePage browser
 
@@ -91,6 +94,7 @@ module.exports =
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
+      .pause 1000
       .assert
 
     updatePerPage browser

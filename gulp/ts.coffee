@@ -37,17 +37,6 @@ gulp.task 'tsProduction', ->
     .pipe buffer()
     .pipe gulp.dest("#{config.path}/scripts")
 
-gulp.task 'tsTranspileServer', ->
-  gulp.src('./server/**/*.ts')
-    .pipe ts(
-      module: 'commonjs'
-      moduleResolution: 'node'
-      noImplicitAny: false,
-      removeComments: true,
-      target: 'es5'
-    )
-    .pipe gulp.dest("#{config.serverPath}")
-
 gulp.task 'tsLint', ->
   gulp.src ['src/**/*.ts', 'server/**/*.ts']
     .pipe tslint(configuration: require('../tslint.json'))
