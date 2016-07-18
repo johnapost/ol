@@ -45,6 +45,7 @@ gulp.task 'ci', [
   'sass'
   'sassComponents'
   'images'
+  'e2e'
 ]
 
 gulp.task 'default', [
