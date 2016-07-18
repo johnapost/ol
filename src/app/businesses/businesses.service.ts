@@ -66,14 +66,4 @@ export class BusinessesService {
   handleError(err: any) {
     return Observable.throw(err)
   }
-
-  // Request the previous page of businesses
-  previousPage() {
-
-  }
-
-  // Request the next page of businesses
-  nextPage(page: number, perPage: number) {
-    this.getBusinesses(page, perPage)
-  }
 }
