@@ -27,6 +27,7 @@ module.exports =
     browser
       .resizeWindow 1025, 768
       .url browser.globals.path
+      .pause 1000
 
     firstBusiness browser
     back browser

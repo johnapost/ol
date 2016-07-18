@@ -41,9 +41,11 @@ gulp.task 'ci', [
   'vendor'
   'tsProduction'
   'jade'
+  'jadeComponents'
   'sass'
   'sassComponents'
   'images'
+  'e2e'
 ]
 
 gulp.task 'default', [
