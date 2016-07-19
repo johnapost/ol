@@ -11,10 +11,17 @@ describe('BusinessComponent', () => {
     businessComponent = new BusinessComponent(route, router, businessesService)
   })
 
-  it('ngOnInit should subscribe', () => {
+  fit('ngOnInit should subscribe to params', () => {
     let id = faker.random.number()
-    var business = { id: id }
-    businessComponent.route = { params: [{ id: id }] }
+    let business = { id: id }
+    let params = { id: id }
+    businessComponent.route = {
+      params: {
+        subscribe(fn1: any) {
+          fn1(params)
+        }
+      }
+    }
     businessComponent.businessesService = {
       getBusiness() {
         return {
@@ -29,13 +36,19 @@ describe('BusinessComponent', () => {
     expect(businessComponent.business).toEqual(business)
   })
 
-  it('ngOnDestroy unsubscribes from the Observable', () => {
+  it('ngOnDestroy unsubscribes from the Observables', () => {
     businessComponent.subscription = {
       unsubscribe() { return }
     }
+    businessComponent.paramsSubscription = {
+      unsubscribe() { return }
+    }
     let unsubscribeSpy = spyOn(businessComponent.subscription, 'unsubscribe')
+    let paramsUnsubscribeSpy =
+      spyOn(businessComponent.paramsSubscription, 'unsubscribe')
 
     businessComponent.ngOnDestroy()
     expect(unsubscribeSpy).toHaveBeenCalled()
+    expect(paramsUnsubscribeSpy).toHaveBeenCalled()
   })
 })

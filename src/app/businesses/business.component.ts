@@ -25,6 +25,7 @@ import {
 })
 export class BusinessComponent {
   business: BusinessObj
+  paramsSubscription: Subscription
   subscription: Subscription
 
   constructor(
@@ -33,18 +34,23 @@ export class BusinessComponent {
     private businessesService: BusinessesService
   ) {}
 
-  // Subscribe to observable, immediately executing XHR for details
   ngOnInit() {
-    let id = +this.route.params['id']
 
-    this.subscription = this.businessesService.getBusiness(id)
-      .subscribe((business: BusinessObj) => {
-        this.business = business
-      })
+    // Subscribe to the route params as an observable
+    this.paramsSubscription = this.route.params.subscribe((params) => {
+      let id = +params['id']
+
+      // Subscribe to observable, immediately executing XHR for details
+      this.subscription = this.businessesService.getBusiness(id)
+        .subscribe((business: BusinessObj) => {
+          this.business = business
+        })
+    })
   }
 
   // Unsubscribe when the component is removed
   ngOnDestroy() {
+    this.paramsSubscription.unsubscribe()
     this.subscription.unsubscribe()
   }
 }
