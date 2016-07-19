@@ -11,7 +11,7 @@ describe('BusinessComponent', () => {
     businessComponent = new BusinessComponent(route, router, businessesService)
   })
 
-  fit('ngOnInit should subscribe to params', () => {
+  it('ngOnInit should subscribe to params', () => {
     let id = faker.random.number()
     let business = { id: id }
     let params = { id: id }
