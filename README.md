@@ -23,7 +23,10 @@ Enter ```gulp``` and you will be able to visit ```http:///localhost:4000``` and 
 Tests
 -----
 
-Run both the unit tests and e2e tests with ```npm test```. This requires that all dependencies are properly installed.
+Unit tests: ```karma start --single-run```
+e2e tests: ```gulp e2e && nightwatch -e chrome```
+
+Run both the unit tests and e2e tests with ```npm test```. This requires that all dependencies are properly installed and JDK is present on the system. Download your JDK for your OS [here](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
 Built with
 ----------
@@ -31,8 +34,6 @@ Built with
 * Client
   * Angular 2 RC 4 - JS Framework along with its dependencies
   * Material Design for Angular 2 - CSS Framework
-  * Velocity - Animation framework
-  * JQuery slim - Element selectors
 
 * Dev
   * TypeScript - Typed JavaScript superset
