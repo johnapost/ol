@@ -12,7 +12,7 @@ import { MdListModule } from '@angular2-material/list'
 import { MdToolbarModule } from '@angular2-material/toolbar'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { routing, appRoutingProviders } from './app.routes';
+import { routing, appRoutingProviders } from './app.routing';
 
 @NgModule({
   declarations: [
