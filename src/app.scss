@@ -1,5 +1,8 @@
+* { font-family: -apple-system, BlinkMacSystemFont; }
+
 body {
   margin: 0;
+  color: #4A475A;
 }
 
 h1 {
@@ -28,3 +31,10 @@ md-icon {
 .content {
   clear: both;
 }
+
+md-toolbar.md-primary { position: fixed; z-index: 100; min-height: 50px; background: #5A566D !important; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+md-toolbar md-toolbar-row { height: 50px !important; }
+.logo { position: relative; display: inline-block; height: 34px; line-height: 34px; padding-left: 46px; }
+.logo:before { content: ""; background-image: url(http://www.ownlocal.com/hubfs/OwnLocal_April2016/images/logo.png); position: absolute; width: 34px; height: 34px; background-size: cover; background-position: top right; background-repeat: no-repeat; top: 0; left: 0; }
+.md-input-element { text-align: center; }
+.right-side .results .md-list-item { padding: 0; height: auto; line-height: 40px; font-size: 16px; color: #4B5966; }
