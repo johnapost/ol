@@ -5,10 +5,10 @@
     md-input([(ngModel)]='perPage' type='number' ngControl='perPage' name='', (keyup.enter)='subscribeHandler()', (blur)='subscribeHandler()')
       span(md-prefix) Results per page:&nbsp;
   .control
-    button(md-raised-button [disabled]='page === 1', (click)='previousPage()')
+    button(md-raised-button [disabled]='page === 1', disableRipple='true', (click)='previousPage()')
       md-icon chevron_left
       | Previous
-    button(md-raised-button [disabled]='page === lastPage', (click)='nextPage()')
+    button(md-raised-button [disabled]='page === lastPage', disableRipple='true', (click)='nextPage()')
       | Next
       md-icon chevron_right
 
